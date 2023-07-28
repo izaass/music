@@ -21,6 +21,7 @@ body {
   width: 400px;
   height: auto;
   /* Adjust this width according to your design */
+  overflow: hidden;
 }
 
 .details {
@@ -231,12 +232,11 @@ p {
 }
 
 .song-list {
-
   display: flex;
   flex-direction: column;
   gap: 7px;
   padding-top: 10px 0px;
-  max-height: 400px;
+  max-height: 250px;
   /* Set a maximum height to make it scrollable */
   overflow-y: auto;
   /* Enable vertical scrolling when content overflows */
@@ -315,4 +315,18 @@ p {
 
 .wrapper::-webkit-scrollbar-thumb:hover {
   background-color: #555;
+}
+
+
+/*Search bar*/
+.search-container {
+  margin: 5px 50px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

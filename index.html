@@ -11,6 +11,9 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        
+    </style>
 </head>
 
 <body>
@@ -69,13 +72,44 @@
                 <span class="stroke"></span>
                 <span class="stroke"></span>
             </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for a song...">
+            </div>
             <div class="song-list">
                 <!-- Your dynamically generated song list will be placed here -->
             </div>
         </div>
 
     </div>
+    <script>
+        // Get references to the search input and the song list container
+        const searchInput = document.getElementById('search-input');
 
+        // Function to filter songs based on search query
+        function filterSongs(searchQuery) {
+            // Get all the song items
+            const songItems = songListContainer.querySelectorAll('.song-item');
+
+            // Loop through each song item and check if it matches the search query
+            songItems.forEach((songItem) => {
+                const songName = songItem.querySelector('.song-name').textContent.toLowerCase();
+                const songArtist = songItem.querySelector('.song-artist').textContent.toLowerCase();
+
+                // Show the song item if the search query matches the song name or artist
+                if (songName.includes(searchQuery) || songArtist.includes(searchQuery)) {
+                    songItem.style.display = 'flex';
+                } else {
+                    songItem.style.display = 'none';
+                }
+            });
+        }
+
+        // Add event listener to the search input for filtering songs
+        searchInput.addEventListener('input', (event) => {
+            const searchQuery = event.target.value.trim().toLowerCase();
+            filterSongs(searchQuery);
+        });
+    </script>
 </body>
 
 </html>
