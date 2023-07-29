@@ -11,4 +11,4 @@ Function
 8) Responsive
 
 The Layout Design of Music Player
-![demo](https://izaass.github.io/demo.gif)!
+![demo.gif](https://izaass.github.io/music/demo.gif)
