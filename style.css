@@ -39,12 +39,7 @@ body {
   background-size: cover;
   background-position: center;
   border-radius: 50%;
-  -moz-box-shadow: 0px 6px 5px black;
-  -webkit-box-shadow: 0px 6px 5px black;
   box-shadow: 0px 6px 5px black;
-  -moz-border-radius: 190px;
-  -webkit-border-radius: 190px;
-  border-radius: 190px;
 }
 
 .now-playing {
@@ -72,7 +67,6 @@ body {
   color: black;
 }
 
-
 .repeat-track,
 .random-track,
 .playpause-track,
@@ -80,7 +74,7 @@ body {
 .next-track {
   padding: 5px 15px;
   opacity: 0.8;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .repeat-track:hover,
@@ -104,8 +98,7 @@ body {
   appearance: none;
   height: 5px;
   background: #83A9FF;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .seek_slider::-webkit-slider-thumb,
@@ -317,16 +310,40 @@ p {
   background-color: #555;
 }
 
-
 /*Search bar*/
+/* Improved search bar */
 .search-container {
-  margin: 5px 50px;
+  margin: 10px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-container input {
   width: 100%;
+  max-width: 400px;
+  /* Limit the width of the search input */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: #fff;
+  /* Add a white background */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add a subtle shadow */
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: #83A9FF;
+  /* Highlight the border on focus */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  /* Add a stronger shadow on focus */
+}
+
+.song-list {
+  /* ... (your existing CSS) ... */
+  /* Add some margin to the song list to separate it from the search bar */
+  margin-top: 20px;
 }
