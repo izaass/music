@@ -23,18 +23,8 @@ let isRandom = false;
 let isRepeat = false;
 let updateTimer;
 
-const music_list = [{
-        "artist": "DUCCI",
-        "name": "'GOTTA GO'",
-        "music": ".\/libary\/'GOTTA GO'.mp3",
-        "img": ".\/libary\/img\/'GOTTA GO'.jpg"
-    },
-    {
-        "artist": "MCK ft TLinh",
-        "name": "'Nếu lúc đó', 'Anh đã ổn hơn'",
-        "music": ".\/libary\/'Nếu lúc đó', 'Anh đã ổn hơn'.mp3",
-        "img": ".\/libary\/img\/'Nếu lúc đó', 'Anh đã ổn hơn'.jpg"
-    },
+const music_list = 
+[
     {
         "artist": "B RAY",
         "name": "1 Vòng Sài Gòn",
@@ -214,6 +204,12 @@ const music_list = [{
         "name": "Fuck Love",
         "music": ".\/libary\/Fuck Love.mp3",
         "img": ".\/libary\/img\/Fuck Love.jpg"
+    },
+    {
+        "artist": "DUCCI",
+        "name": "'GOTTA GO'",
+        "music": ".\/libary\/GOTTA GO.mp3",
+        "img": ".\/libary\/img\/GOTTA GO.jpg"
     },
     {
         "artist": "HIEUTHUHAI",
@@ -454,6 +450,12 @@ const music_list = [{
         "name": "Nếu Như Là Định Mệnh",
         "music": ".\/libary\/Nếu Như Là Định Mệnh.mp3",
         "img": ".\/libary\/img\/Nếu Như Là Định Mệnh.jpg"
+    },
+    {
+        "artist": "MCK ft TLinh",
+        "name": "'Nếu lúc đó', 'Anh đã ổn hơn'",
+        "music": ".\/libary\/Nếu lúc đó Anh đã ổn hơn.mp3",
+        "img": ".\/libary\/img\/Nếu lúc đó Anh đã ổn hơn.jpg"
     },
     {
         "artist": "Travis Scott",
@@ -991,7 +993,7 @@ loadTrack(track_index);
 function loadTrack(track_index) {
     clearInterval(updateTimer);
     reset();
-
+  
     curr_track.src = music_list[track_index].music;
     curr_track.load();
     const encodedImgUrl = encodeURIComponent(music_list[track_index].name);
@@ -1001,21 +1003,21 @@ function loadTrack(track_index) {
     track_name.textContent = music_list[track_index].name;
     track_artist.textContent = music_list[track_index].artist;
     now_playing.textContent = "Playing music " + (track_index + 1) + " of " + music_list.length;
-
+  
     updateTimer = setInterval(setUpdate, 1000);
-
+  
     curr_track.addEventListener('ended', nextTrack);
     updateTitle(music_list[track_index].name, music_list[track_index].artist);
 
     // Set the background of the background container to the image of the current track with a blur effect
     const backgroundContainer = document.querySelector('.background-container');
-    backgroundContainer.style.backgroundImage = "url(" + music_list[track_index].img + ")";
+    backgroundContainer.style.backgroundImage = "url(./libary/img/" + encodedImgUrl + ".jpg)";
     backgroundContainer.style.backgroundRepeat = "no-repeat";
     backgroundContainer.style.backgroundSize = "cover";
     backgroundContainer.style.backgroundAttachment = "fixed";
     backgroundContainer.style.backgroundPosition = "center";
     backgroundContainer.style.filter = "blur(8px)";
-}
+  }
 
 
 function reset() {
@@ -1025,9 +1027,9 @@ function reset() {
 }
 
 function randomTrack() {
-    if (isRandom) {
+    if(isRandom){
         pauseRandom();
-    } else {
+    }else{
         playRandom();
         pauseRepeat();
     }
@@ -1035,23 +1037,20 @@ function randomTrack() {
 
 function repeat() {
     if (isRepeat) {
-        pauseRepeat();
+      pauseRepeat();
     } else {
-        playRepeat();
-        pauseRandom(); // If repeat is enabled, disable random
+      playRepeat();
+      pauseRandom(); // If repeat is enabled, disable random
     }
-}
-
+  }
 function playRepeat() {
     isRepeat = true;
     repeatIcon.classList.add('repeatActive');
 }
-
 function pauseRepeat() {
     isRepeat = false;
     repeatIcon.classList.remove('repeatActive');
 }
-
 function playRandom() {
     isRandom = true;
     randomIcon.classList.add('randomActive');
@@ -1090,21 +1089,20 @@ function pauseTrack() {
 
 function nextTrack() {
     if (isRepeat) {
-        // If repeat is enabled, just play the same song again
-        loadTrack(track_index);
-        playTrack();
+      // If repeat is enabled, just play the same song again
+      loadTrack(track_index);
+      playTrack();
     } else if (track_index < music_list.length - 1 && isRandom === false) {
-        track_index += 1;
+      track_index += 1;
     } else if (track_index < music_list.length - 1 && isRandom === true) {
-        let random_index = Number.parseInt(Math.random() * music_list.length);
-        track_index = random_index;
+      let random_index = Number.parseInt(Math.random() * music_list.length);
+      track_index = random_index;
     } else {
-        track_index = 0;
+      track_index = 0;
     }
     loadTrack(track_index);
     playTrack();
-}
-
+  }
 function prevTrack() {
     if (track_index > 0) {
         track_index -= 1;
@@ -1125,29 +1123,28 @@ function setVolume() {
 }
 // Function to check if audio is ready to play
 function checkAudioReady() {
-    if (curr_track.readyState >= 4) {
-        clearInterval(audioReadyInterval);
-        playTrack();
-    }
+  if (curr_track.readyState >= 4) {
+    clearInterval(audioReadyInterval);
+    playTrack();
+  }
 }
 
 // Event listener to handle the end of the track
 curr_track.addEventListener('ended', function () {
-    if (isRepeat) {
-        loadTrack(track_index); // Reload the same track
-        playTrack();
-    } else {
-        nextTrack();
-    }
+  if (isRepeat) {
+    loadTrack(track_index); // Reload the same track
+    playTrack();
+  } else {
+    nextTrack();
+  }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    loadTrack(track_index);
+  loadTrack(track_index);
 
-    // Check if the audio is ready to play every 100 milliseconds
-    audioReadyInterval = setInterval(checkAudioReady, 100);
+  // Check if the audio is ready to play every 100 milliseconds
+  audioReadyInterval = setInterval(checkAudioReady, 100);
 });
-
 function setUpdate() {
     let seekPosition = 0;
     if (!isNaN(curr_track.duration)) {
