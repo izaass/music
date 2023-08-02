@@ -26,6 +26,18 @@ let updateTimer;
 const music_list = 
 [
     {
+            "artist": "Limitlxss x Ogenus",
+            "name": "Anh Không Cố Ý",
+            "music": ".\/libary\/Anh Không Cố Ý.mp3",
+            "img": ".\/libary\/new\/Limitlxss x Ogenus - Anh Không Cố Ý.jpg"
+        },
+        {
+            "artist": "k3",
+            "name": "Meant To Be",
+            "music": ".\/libary\/Meant To Be.mp3",
+            "img": ".\/libary\/new\/Meant To Be.jpg"
+        },
+    {
         "artist": "B RAY",
         "name": "1 Vòng Sài Gòn",
         "music": ".\/libary\/1 Vòng Sài Gòn.mp3",
