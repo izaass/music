@@ -26,6 +26,12 @@ let updateTimer;
 const music_list = 
 [
     {
+        "artist": "Hút Thuốc sau khi làm tình",
+        "name": "Apocalypse -Tận thế",
+        "music": "https://izaass.github.io/music/libary/Apocalypse.mp3",
+        "img": ".\/libary\/img\/Apocalypse.jpg"
+    },
+    {
         "artist": "Limitlxss x Ogenus",
         "name": "Anh Không Cố Ý",
         "music": ".\/libary\/Anh Không Cố Ý.mp3",
