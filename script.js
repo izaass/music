@@ -27,7 +27,7 @@ const music_list =
 [
     {
         "artist": "Hút Thuốc sau khi làm tình",
-        "name": "Apocalypse -Tận thế",
+        "name": "Apocalypse",
         "music": "https://izaass.github.io/music/libary/Apocalypse.mp3",
         "img": ".\/libary\/img\/Apocalypse.jpg"
     },
